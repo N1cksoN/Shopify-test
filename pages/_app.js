@@ -2,6 +2,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import { AppProvider } from '@shopify/polaris';
 import { Provider } from '@shopify/app-bridge-react';
+import ClientRouter from '../components/ClientRouter';
 import '@shopify/polaris/dist/styles.css';
 import translations from '@shopify/polaris/locales/en.json';
 import Cookies from 'js-cookie';
@@ -17,9 +18,10 @@ class MyApp extends App {
           <meta charSet="utf-8" />
         </Head>
         <Provider config={ config }>
-          <AppProvider i18n={ translations }>
-            <Component { ...pageProps } />
-          </AppProvider>  
+          <ClientRouter />
+            <AppProvider i18n={ translations }>
+              <Component { ...pageProps } />
+            </AppProvider>  
         </Provider>
       </React.Fragment>
     );
